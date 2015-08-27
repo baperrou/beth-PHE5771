@@ -1,0 +1,631 @@
+body.page-programmes, body.program-avoidable-blindness, body.program-youth-leadership {
+		.col-lg-6 {
+			padding-right:0;
+		}
+		.program-link {
+			span {
+				font-size: 34px;
+				font-weight: 400px;
+				color: #fff;
+				position: absolute;
+				top: 0;
+				text-align: center;
+				width: 540px;
+				text-transform: uppercase;
+				color:#fff;
+				background: url('imgs/purple_mask_lg.png') no-repeat bottom right;
+				height: 100%;
+				padding-top: 30%;
+				&:hover {
+				background: url('imgs/hover_program.png') no-repeat bottom right;
+				}
+			}
+		}
+		.sub-program-info {
+			width:83%;
+			margin:10px auto;
+			h2 {
+				font-size:190px;
+				color:$dis-font-color;
+				float:left;
+				margin: 0;
+			}
+			div {
+				color:$dis-font-color;
+				float:right;
+				font-size: 40px;
+				text-transform: uppercase;
+				span {
+					font-size: 90px;
+				}
+			}
+			p {
+				margin: 20px auto;
+				text-align: center;
+				clear:both;
+				
+			}
+			.sub-graphic {
+				div {
+					margin-top:50px;
+					padding-top:60px;
+					line-height: .8em;
+				}
+			}
+
+		
+		}
+	@include screen(xs) {
+		.col-lg-6 {
+			padding-right:15px;
+			margin-bottom: 15px;
+		}
+		.program-link {
+			span {
+				font-size: 30px;
+				width:calc(100%-30px);
+				width:-webkit-calc(100% - 30px);
+				width:-moz-calc(100% - 30px);
+				
+			}
+		}
+		
+	}
+		
+}
+body.program-avoidable-blindness {
+		.col-lg-6 {
+			margin-bottom: 10px;
+		}
+		.program-link {
+			span {
+				width:550px;
+				padding-top: 14%;
+				font-size: 34px;
+			}
+		&.id-97 {
+			span {
+			padding-top:12%;
+			line-height: 1.2em;
+			}
+		}
+			
+		}
+		.sub-graphic {				
+				div {
+					background: url("imgs/avoid_eye.png") no-repeat center top;
+					width: 35%;
+					float: left;
+					text-align: center;
+
+				}
+			}
+		
+	@include screen(xs) {
+		.program-link {
+			span {
+				width:calc(100%-30px);
+				width:-webkit-calc(100% - 30px);
+				width:-moz-calc(100% - 30px);
+				padding-top: 13%;
+				font-size: 22px;
+			}
+		}
+		.sub-program-info {
+			width:100%;
+			margin: 0;
+			h2 {
+				font-size: 87px;
+			}
+			.div {
+				padding-left:13px;
+			}
+			.sub-graphic {				
+				div {
+					background: url("imgs/avoid_eye.png") no-repeat center 8px;
+					background-size: 40%;
+					width: 47%;
+					font-size: 20px;
+					padding-top: 44px;
+					margin-top: 3px;
+				}
+			}
+		}
+	}
+}
+body.program-youth-leadership {
+		.program-link {
+			span {
+				width:100%;
+				padding-top: 18%;
+				margin-left: -30px;
+				
+			}
+			
+		}
+		.sub-program-info {
+			.sub-graphic {
+				div {
+					background: url('imgs/youth_people.png') no-repeat top;
+					width:61%;
+					font-size: 39px;
+					span {
+						float: right;
+						left:10px;
+						position: relative;
+						top:-20px;
+					}
+				}
+			}
+		}
+	@include screen(xs) {
+		.program-link {
+			span {
+				width:calc(100%-30px);
+				width:-webkit-calc(100% - 30px);
+				width:-moz-calc(100% - 30px);
+				padding-top: 12%;
+				font-size: 22px;
+				margin-left: 0;	
+				}
+		}
+		.sub-program-info {
+			width:100%;
+			h2 {
+				font-size: 80px;
+				padding-bottom: 50px;
+			}
+			.sub-graphic {
+				background: url('imgs/youth_people.png') no-repeat bottom;
+				div {
+					background: none;
+					font-size: 20px;
+					width:54%;
+					margin:0;
+					padding-top:15px;
+					span {
+						float: none;
+						left:0px;
+						position: relative;
+						top:0;
+						font-size: inherit;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.highlight-program {
+			background: $dis-font-color;
+			color:#fff;
+			font-style: italic;
+			margin-left: -800px;
+			margin-right: -800px;
+			overflow-x: hidden;
+			margin-top:20px;
+			margin-bottom: 10px;
+			p {
+				width:920px;
+				margin: auto;
+				font-size: 35px;
+				padding:10px 0;
+				line-height: 1.2em;
+				
+			}
+		}
+body.program-retinopathy-of-prematurity, body.program-diabetic-retinopathy, body.program-fellowships-research-and-technology, body.program-blinding-trachoma, body.program-the-queens-young-leaders {
+	.programs {
+		min-height: 35px;
+	
+		
+	}
+	h3 {
+		text-transform: uppercase;
+		font-size: 40px;
+	}
+	.red-spot {
+		left:45px;
+		font-weight: 300;
+		text-transform: uppercase;		
+		position: absolute;
+		top: 50px;
+		text-align: center;
+		width: 400px;
+		height: 400px;
+		
+		h1 {
+			font-size:50px;
+			color: #fff;
+			margin-top:134px;
+			line-height: .8em;
+		}
+		.lead {
+			color: #fff;
+			line-height: 1em;
+			width:94%;
+			margin: auto;
+		}
+	}
+	
+	.main-program-content {
+			h4 {
+		font-weight: 300;
+		}
+		.wp-image-463, .wp-image-462, .wp-image-286, .col-lg-4 .img-responsive, .col-lg-5 .img-responsive {
+		padding-top:8px;
+		}
+	}
+	.flexslider {
+		margin-top:20px;
+		.flex-control-nav {
+		
+			&.flex-control-thumbs li {
+				position: relative;
+				margin: 5px 1.4% 5px 0;
+				background-color: $dis-sub-color;
+			}
+			
+			img.flex-active, img:hover {
+				@include opacity(.7);
+			
+			
+			}
+		}
+		.wrapper-div {
+			height: 520px;
+			.gallery-img {
+				height:100%;
+				text-align: center;  /* align the inline(-block) elements horizontally */
+				font: 0/0 a;         /* remove the gap between inline(-block) elements */
+				&:before {
+					content: ' ';
+					display: inline-block;
+					vertical-align: middle;  /* vertical alignment of the inline element */
+					height: 100%;
+				}
+				img {
+					display: inline-block;
+					vertical-align: middle;  /* vertical alignment of the inline element */
+					font: 16px/1;        /* <-- reset the font property */
+				}
+			}
+		}
+	
+	}
+}
+body.program-the-queens-young-leaders {
+	.red-spot {
+		right:45px;
+		left: inherit;
+		}
+}
+body.program-fellowships-research-and-technology {
+	.main-program-content {
+		.col-lg-4 {
+			padding-right: 0;
+		}
+		.col-lg-8 {
+			line-height: 1.7em;
+		}
+	}
+}
+body.program-retinopathy-of-prematurity, body.program-diabetic-retinopathy{
+	.red-spot {
+		h1 {
+			margin-top:171px;
+		}
+	}
+	
+}
+body.program-blinding-trachoma {
+	.footnote {
+		font-size: 15px;
+	}
+	.red-spot {
+		h1 {
+			margin-top:141px;
+		}
+	}
+	.safe {
+		font-size:19px;
+		color:$dis-font-color;
+	}
+	#map-hotspots {
+		position: relative;
+		max-width: 922px;
+		width:100%;
+		height: 530px; 
+		z-index: 101; 
+		overflow: hidden;
+		margin-top:20px;
+		.img-container {
+			position: relative; 
+			height: 0px; 
+			padding-bottom: 47%;
+			 img {
+				position: absolute; 
+				top: 0px; 
+				left: 0px; 
+				z-index: 102;
+			}
+		
+		}
+		.redhotspot {
+			position: absolute; 
+			z-index: 103; 
+			background:url('imgs/hot_dot.png') no-repeat;
+			width:25px;
+			height: 25px;
+			&:hover {
+				background:url('imgs/hot_dot_hover.png') no-repeat;
+			}
+		}
+		#fhotspot1 {
+			top: 42%; 
+			left: 49%;
+		}
+		#fhotspot2 {
+			top: 61%; 
+			left: 84%;
+		}
+		#fhotspot3 {
+			top: 55%; 
+			left: 94%;
+
+		}
+	}
+	#country-container {
+		position: relative;
+		top: -77px;
+		left: 28%;
+		max-width:55%;
+		display: inline-block;
+		h3 {
+			font-size:35px;
+			color:$dis-font-color;
+			text-transform: uppercase;
+		}
+		p {
+			font-size: 15px;
+			color:#000;
+		}
+	}
+	@include screen(xs){
+		.footnote {
+			font-size: 12px;
+		}
+		#map-hotspots {
+			height: auto;
+			.position-container {
+				position: relative;
+					.redhotspot {
+						background-size: 30%;
+						&:hover {
+							background-size: 30%;
+						}
+					}
+					#fhotspot1 {
+						top: 50%; 
+					}
+					#fhotspot2 {
+						top: 75%; 
+						
+					}
+					#fhotspot3 {
+						top: 69%; 
+			
+					}
+			}						
+		}
+		
+		#country-container {
+				top: 0;
+				left:0;
+				max-width:100%;
+				height: auto;
+				h3 {
+					font-size:22px;
+				}
+				p {
+					font-size: 12px;
+				}
+			}
+	}
+}
+body.program-retinopathy-of-prematurity, body.program-diabetic-retinopathy, body.program-fellowships-research-and-technology, body.program-blinding-trachoma, body.program-the-queens-young-leaders {
+	@include screen(xs){
+		.main.container {
+			margin-bottom:20px;
+		}
+		.sub-programs {
+			display: none;
+		}
+		.red-spot {
+			position: absolute;
+			left: 0;
+			height: auto;
+			width: auto;
+			top:0;
+			right:0;
+			h1 {
+				position: relative;
+				font-size:36px;
+				margin: auto;
+				width: 75%;
+				top: 190px;
+			}
+			.lead {
+				color: #fff;
+				width:69%;
+				margin: auto;
+				position: relative;
+				top: 201px;
+				font-size: 15px;
+			}
+		}
+		.back-page-link {
+			margin-top:0;
+			position: absolute;
+			top:130px;
+			background: url('imgs/icon_wh.jpg') no-repeat center center;
+			width:auto;
+		}
+		.main-program-content {
+			max-height: 100%;
+			
+			}
+			h3 {
+				font-size: 29px;
+				margin-top:10px;
+			}
+			.slideup, .slidedown {
+			max-height: 16em;
+			overflow:hidden;  
+			width: 100%;   
+            -webkit-transition: max-height 0.8s ease-in-out;
+            -moz-transition: max-height 0.8s ease-in-out;
+            -o-transition: max-height 0.8s ease-in-out;
+            transition: max-height 0.8s ease-in-out;
+			}
+			.slidedown {            
+            max-height:100%;            
+			}    
+			.show-hide-button {
+				text-align: center;
+				display: block;
+				.toggle {
+					text-decoration:none;
+					width:100%;	
+					.fa {
+						margin-left:5px;
+					}
+					.more:before {
+						content:"More";
+					}
+					.less:before {
+						content: "Less";
+					}
+						
+				}
+			}
+		.row {
+			.col-xs-6 {
+				min-height: 220px;
+			}
+		}
+		.highlight-program {
+			width: 110.5%;
+			margin-left: -15px;
+			p {
+				width:100%;
+				margin: auto;
+				font-size: 20px;
+				padding:10px 15px;
+				
+			}
+		}
+		.flexslider  {
+			margin:10px 0;
+			.wrapper-div {
+				height: auto;
+			}
+			.flex-control-paging  {
+				li {
+					a {
+						background:$dis-font-color2;
+						@include opacity(.7);					
+						&.flex-active {
+							background:$dis-sub-color;
+							@include opacity(1);
+						}
+					}
+				}
+				
+			}
+			.fa-3x {
+				font-size:1.5em;
+			}
+			.flex-control-nav {
+				bottom: -6px;
+			}
+			.flex-direction-nav a {
+				top:44%;
+			}
+			.flex-caption {
+				background: none;				
+				position: relative;
+				bottom: 0;
+				top:3px;
+				line-height:10px;
+				display:block;
+				margin-bottom:5px;
+				padding:0;
+				span {
+					color:#000;
+					font-size: 12px;
+				}
+			}
+		}
+
+	}
+}
+body.program-the-queens-young-leaders {
+	@include screen(xs){
+		.red-spot {
+			h1 {
+				font-size: 33px;
+				top:180px;
+			}
+			.lead {
+				width:66%;
+				top:184px;
+				
+			}
+		}
+	}
+}
+body.program-fellowships-research-and-technology {
+	@include screen(xs){
+		.red-spot {
+			h1 {
+				font-size:30px;
+				top:190px;
+			}
+			.lead {
+				width:66%;
+			}
+		}
+	}
+
+}
+body.program-retinopathy-of-prematurity {
+	@include screen(xs){
+		.red-spot {
+			h1 {
+				font-size:30px;
+				top:200px;
+			}
+			.lead {
+				top:215px;
+				width:61%;
+			}
+		}
+	}
+
+}
+body.page-programmes {
+		.program-link {
+			span {
+				
+				&:hover {
+				background: url('imgs/hover_program.png') no-repeat bottom right;
+				color:#fff;
+				}
+			}
+		}
+	}
+
+
+

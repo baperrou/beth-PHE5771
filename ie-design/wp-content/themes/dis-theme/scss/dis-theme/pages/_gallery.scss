@@ -1,0 +1,154 @@
+.flex-caption {
+    bottom: -1px;
+    left: 0;
+    line-height: 18px;
+    position: absolute;
+    width: 100%;
+    background:#000;
+    min-height: 60px;
+    padding:10px;
+     text-align: justify;
+   @include transparent(#000, .7);
+    .zoom {
+	    color: #fff;
+	    font-size: 16px;
+	    font-weight: 300;
+	    font-family: 'Roboto Condensed', sans-serif;
+	   
+    }
+}
+#qedjt-page-gallery .flex-caption {
+	  bottom: -50px;
+	  min-height: 50px;
+	  padding:5px;
+	  
+	 
+}
+
+
+body.page-gallery {
+	.col-lg-12, .col-xs-12 {
+		padding:0;
+	}
+	.flexslider {
+		.wrapper-div {
+			height:535px;
+		}
+		margin-top:20px;
+		.gallery-img {
+			height:100%;
+			text-align: center;  /* align the inline(-block) elements horizontally */
+			font: 0/0 a;         /* remove the gap between inline(-block) elements */
+			&:before {
+				content: ' ';
+				display: inline-block;
+				vertical-align: middle;  /* vertical alignment of the inline element */
+				height: 100%;
+			}
+			img {
+				display: inline-block;
+				vertical-align: middle;  /* vertical alignment of the inline element */
+				font: 16px/1 Arial sans-serif;        /* <-- reset the font property */
+			}
+		}
+		.flex-control-nav {
+			&.flex-control-thumbs li {
+				position: relative;
+				background-color: $dis-sub-color;
+			}
+			
+			img.flex-active, img:hover  {
+				
+				@include opacity(.7);			
+			
+			}
+		}
+
+	
+	}
+	@include screen(xs) {
+		.main.container {
+			margin-bottom:40px;
+		}
+		.flexslider  {
+			margin:10px 0;
+			.wrapper-div {
+				height: auto;
+				.gallery-img {
+				 	img {
+					 max-height:200px !important;
+					 }
+				}
+			}
+			.flex-control-paging  {
+				position: relative;
+				li {
+					position: absolute;
+					top:3px;
+					background:none;	
+					margin:0;
+					margin-left:-10px;				
+					a {
+						background:none;
+						display: none;
+						color:$dis-sub-color;
+											
+						&.flex-active {
+							display:block;
+							text-align: center;
+							border-radius: inherit;
+							text-indent: inherit;
+							box-shadow: inherit;
+							
+						}
+					}
+				}
+				
+			}
+			.fa-3x {
+				font-size:1.5em;
+			}
+			.flex-direction-nav {
+				position: absolute;
+				width: 100%;
+				bottom:-25px;
+				color:$dis-sub-color;
+				a {
+					color:$dis-sub-color;
+				}
+				.flex-prev {
+					background:url('imgs/gallery_prev.png') no-repeat;
+					height: 20px;
+					width: 44px;				
+					i:before {
+						content:"";
+					}
+				}
+				.flex-next {
+					background:url('imgs/gallery_next.png') no-repeat;
+					height: 20px;
+					width: 44px;				
+					i:before {
+						content:"";
+					}
+				}
+			}
+			.flex-caption {
+			display: block;
+				background: none;				
+				position: relative;
+				bottom: -3px;
+				line-height:10px;
+				padding:0;
+				span {
+					color:#000;
+					font-size: 12px;
+				}
+			}
+		}
+		.back-to-top {
+			display: none !important;
+		}
+	 }
+
+}

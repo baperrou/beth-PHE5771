@@ -1,0 +1,19 @@
+//core (base, main or generic scss files)
+@import "dis-theme/core/bootswatchr";
+@import "dis-theme/core/variables";
+@import "dis-theme/core/functions";
+@import "dis-theme/core/header";
+@import "dis-theme/core/footer";
+@import "dis-theme/core/global-styles";
+
+
+
+
+
+//pages
+@import "dis-theme/pages/home";
+@import "dis-theme/pages/form-page";
+@import "dis-theme/pages/the_basics";
+@import "dis-theme/pages/event";
+@import "dis-theme/pages/gallery";
+@import "dis-theme/pages/your-apps";

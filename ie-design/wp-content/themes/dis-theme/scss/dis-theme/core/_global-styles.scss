@@ -1,0 +1,118 @@
+/* GLOBAL STYLES FORM THE STYLE GUIDE */
+
+html {
+	height: auto !important;
+}
+body {
+	background-color: #fff;
+	height: auto;
+	overflow-x:hidden;
+}
+h3 {
+	font-size:24px;
+}
+.jumbotron {
+	font-size: 21px;
+}
+@include screen(lg) {
+	.container {
+	width:1140px;
+}
+}
+
+@include screen('xs'){
+	body {
+			}
+	.main.container {
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+	}
+}
+.disabled {
+  text-decoration: line-through;
+  color: gray;
+}
+// conform acf fields to bootstrap
+
+.acf-form {
+	.field {
+		margin-right: -15px;
+		margin-left: -15px;
+		min-height: 175px;
+		&:before {
+		    content: "";
+		    display: block;
+		    height: 1px;
+		    width: 40%;
+		    margin: 20px 0;
+		    background: #eee;
+		}
+		p.label {
+			width: 66.66666666666666%;
+			float: left;
+			position: relative;
+			min-height: 1px;
+			padding-right: 15px;
+			padding-left: 15px;
+			label {
+				white-space:normal;
+			}
+		}
+		ul.acf-radio-list, ul.acf-checkbox-list {
+			width: 33.33333333333333%;
+			float:left;
+			position: relative;
+			min-height: 1px;
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+		&.field_type-taxonomy {
+			display:none;
+		}
+		label {
+			text-align:left;
+		}
+		input[type="submit"] {
+			color: #fff;
+			background-color: #5cb85c;
+			border-color: #4cae4c;
+			display: inline-block;
+		    margin-bottom: 0;
+		    font-weight: normal;
+		    text-align: center;
+		    vertical-align: middle;
+		    cursor: pointer;
+		    background-image: none;
+		    border: 1px solid transparent;
+		    white-space: nowrap;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857;
+		    border-radius: 4px;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    &:hover {
+			    color: #fff;
+				background-color: #449d44;
+				border-color: #398439;
+		    }
+		}
+	}
+	@include screen(xs) {
+      	
+      	
+		}	
+
+	
+}
+
+/*tidy up acf forms admin to insure to bleed through*/
+
+.wp-admin {
+	.modal {
+		display:none !important;
+	}
+}
+  	
