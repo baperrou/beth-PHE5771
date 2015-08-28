@@ -908,15 +908,15 @@ function single_form_question_count($type, $app_id) {
 					$q= $q - 5;
 				endif;				
 			endif;
-			// Usability form
-			if($type == 'qu_form'):
-				if($fields['us_q2']['value'] != 'YES'):
+			//* Usability form - no dependent logic
+			/*if($type == 'qu_form'):
+				if($fields['us_q2']['value'] != 1):
 					$q--;
 				endif;
 				if($fields['us_q9']['value'] != 'YES'):
 				$q--;
 				endif;
-			endif;			
+			endif;**/		
 			//inoperability form
 			if($type == 'io_form'):
 				if($fields['io_q0']['value'] != 'YES'):
@@ -943,10 +943,10 @@ function single_form_question_count($type, $app_id) {
 			endif;
 			//Open Data form
 			if($type == 'od_form'):
-				if(strstr($fields['od_q0']['value'], 'YES')):
+				if($fields['od_q0']['value'] != 'YES'):
 					$q= $q - 6;
 				endif;	
-				if(strstr($fields['od_q2']['value'], 'YES')):
+				if($fields['od_q2']['value']!= 'YES'):
 					$q--;
 				endif;				
 			endif;
@@ -954,40 +954,40 @@ function single_form_question_count($type, $app_id) {
 			//no question count logic
 			//Effectiveness form
 			if($type == 'eff_form'):
-				if($fields['eff_q2']['value'] != 'YES'):
+				if($fields['eff_q2']['value'] != 1):
 					$q--;
 				endif;
-				if($fields['eff_q4']['value'] != 'YES'):
+				if($fields['eff_q4']['value'] != 1):
 					$q--;
 				endif;
-				if($fields['eff_q6']['value'] != 'YES'):
+				if($fields['eff_q6']['value'] != 1):
 					$q--;
 				endif;
 				if($fields['eff_q8']['value'] <= -998 OR $fields['eff_q8']['value'] == 'SELECT ANSWER' ):
 					$q--;$q--;
 				endif;
-				if($fields['eff_q11']['value'] != 'YES'):
+				if($fields['eff_q11']['value'] != 1):
 					$q--; 
 				endif;
-				if($fields['eff_q13']['value'] != 'YES'):
+				if($fields['eff_q13']['value'] != 1):
 					$q--;
 				endif;
-				if($fields['eff_q15']['value'] != 'YES'):
+				if($fields['eff_q15']['value'] != 1):
 					$q--;
 				endif;
-				if($fields['eff_q17']['value'] != 'YES'):
+				if($fields['eff_q17']['value'] != 1):
 					$q--;
 				endif;
-				if($fields['eff_q19']['value'] != 'YES'):
+				if($fields['eff_q19']['value'] != 1):
 					$q--;
 				endif;	
-				if($fields['eff_q21']['value'] != 'YES'):
+				if($fields['eff_q21']['value'] != 1):
 					$q--;$q--; 
 				endif;
-				if($fields['eff_q26']['value'] != 'YES'):
+				if($fields['eff_q26']['value'] != 10):
 					$q--;$q--;
 				endif;
-				if($fields['eff_q29']['value'] != 'YES'):
+				if($fields['eff_q29']['value'] != 10):
 					$q--;$q--;$q--;
 				endif;				
 			endif;
