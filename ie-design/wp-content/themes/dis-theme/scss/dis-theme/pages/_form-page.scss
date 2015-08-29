@@ -4,9 +4,11 @@ body.page-the-form {
 			background: none;
 			border:none;
 		}
-		.inside {			
+		.inside {	
+					
 		/* mimics bootstrap well */
 			.field {
+				overflow-x: hidden;
 				min-height: 20px;
 				padding: 19px;
 				margin-bottom: 20px;

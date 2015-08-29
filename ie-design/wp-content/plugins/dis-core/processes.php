@@ -476,43 +476,45 @@ function form_pass_fail($type, $app_id, $page){
 		}
 	//usability logic
 	elseif ($type == 'qu_form') {	
-		//check first question, decide what to do if NO		
+		//check first question, decide what to do if NO	
+		$score = 0;	
 		foreach($fields as $field ){						
 			switch($field['value']){
 				case -999:
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
-					break 2;	
+					break 1;	
 				case 'SELECT ANSWER':
 					$score = 19991;
-					break 2;
+					break 1;
 				default :									
 					// pass logic for Privacy and Security Only
-					$score = 1;
-					break 2;
+					$score = $score + $field['value'];
+					break 1;
 				}
 			}
 												
 		}
 	//tech stability logic
 	elseif ($type == 'ts_form') {	
-		//check first question, decide what to do if NO		
+		//check first question, decide what to do if NO	
+		$score = 0;		
 		foreach($fields as $field ){						
 			switch($field['value']){
 				case -999:
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
-					break 2;	
+					break 1;	
 				case 'SELECT ANSWER':
 					$score = 19991;
-					break 2;
+					break 1;
 				default :									
 					// pass logic for tech stability Only
 					// do we need to add up the 1s
-					$score = 1;
-					break 2;
+					$score = $score + $field['value'];
+					break 1;
 				}
 			}
 												
@@ -659,7 +661,7 @@ function form_pass_fail($type, $app_id, $page){
 			$text = 'Your app has failed evaluation for 1 or more reasons.  Please see red below to correct';	
 			$level = 'Failed';
 			break;
-		case $score > 1 && $score < 2000:
+		case $score >= 1 && $score < 2000:
 			$alert = 'alert-success';
 			$text = 'Your app has passed this section.';
 			$level = 'Pass';
@@ -765,10 +767,10 @@ function test_count_form_questions($type, $app_id) {
 			endif;
 			//Open Data form
 			if($type == 'od_form'):
-				if(strstr($fields['od_q0']['value'], 'YES')):
-					$q= $q - 6;
+				if($fields['od_q0']['value']!= 'YES'):
+					$q= $q - 7;
 				endif;	
-				if(strstr($fields['od_q2']['value'], 'YES')):
+				if($fields['od_q2']['value']!= 'YES'):
 					$q--;
 				endif;				
 			endif;
