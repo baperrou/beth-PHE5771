@@ -155,7 +155,7 @@ function activation_page($type) {
                   <b>Probably not a Medical Device</b>
                   <br>
                   <br>
-                  <a href="#" class="btn btn-default">Continue with self assessment</a>
+                  <a href="'.$_SERVER['REQUEST_URI'].'&begin_safety=1" class="btn btn-default">Continue with self assessment</a>
                 </div>
               </div>
               <p>
@@ -176,7 +176,7 @@ function activation_page($type) {
                   <b>Probably not a Medical Device</b>
                   <br>
                   <br>
-                  <a href="#" class="btn btn-default">Continue with self assessment</a>
+                  <a href="'.$_SERVER['REQUEST_URI'].'&begin_safety=1" class="btn btn-default">Continue with self assessment</a>
                 </div>
               </div>
             </div>
@@ -199,7 +199,7 @@ function activation_page($type) {
                   <a href="#" class="btn btn-default">Start MHRA Approval</a>
                   <br>
                   <br>
-                  <a href="#" class="btn btn-default">Continue with self assessment</a>
+                  <a href="'.$_SERVER['REQUEST_URI'].'&begin_safety=1" class="btn btn-default">Continue with self assessment</a>
                   <div>
                     <br>
                   </div>
@@ -228,7 +228,7 @@ function activation_page($type) {
           </div>
         </div>';
 	}
-	
+	echo $out;
 	
 	
 	

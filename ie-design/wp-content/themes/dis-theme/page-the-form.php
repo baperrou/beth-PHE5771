@@ -60,8 +60,15 @@
           <h4></h4>
         </h3>
         <hr>
-        <?php form_pass_fail($form, $id, 'single_form');?>
- <?php if($_GET['disabled'] == 'disabled') {
+        
+ <?php 
+	 //if safety form check for answered questions then give warning
+	 if($_GET['begin_safety']) {
+		 $begin_safety = 1;
+		 } else {
+	 		$begin_safety = count_single_form_answered($form, $tax_id);
+	 		}
+	 if($_GET['disabled'] == 'disabled') {
 		echo '<div class="alert alert-info">
           <h3>
             This section has been marked as not relevant for your App
@@ -79,11 +86,15 @@
           </p>
         </div>';
 	}
+	
+	elseif($begin_safety == 0 && $form == 'safety_form') {
+		activation_page($form);
+	}
 	else { ?>
 		
-		
+		<?php form_pass_fail($form, $id, 'single_form');?>
 	
-
+	
         <p>
           <?php echo form_description($form); ?>
         </p>
@@ -100,7 +111,7 @@
 		),
 		
 		'field_groups'	=> $group,		
-		'submit_value' => __("Submit your answers", 'acf'),
+		'submit_value' => __("Save and continue", 'acf'),
 		'return'		=> home_url('/app_name/'.$term->slug),	
 		));
 	

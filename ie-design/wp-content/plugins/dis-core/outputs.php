@@ -108,9 +108,13 @@ function yes_no_forms($page) {
 <p>Start your application with the ‘Safety’ section of the assessment to check the most appropriate next steps</p>
 
         <p>
-         <a href="/ie-design/the-basics" class="btn btn-info">Go back and change answers</a>
-        </p>
-      </div>';
+        <a href="/ie-design/the-basics" class="btn btn-info">Go back and change answers</a>';
+	      if(isset($_SESSION['developer_id'])) :
+		  	$out[]=' <a href="/ie-design/your-apps"  class="btn btn-success">Save this and move to the next step</a>';
+	      else:
+	      $out[]=' <a href="#" data-toggle="modal" data-target="#signUp" class="btn btn-success">Save this and move to the next step</a>';
+	      endif;
+       $out[]=' </p></div>';
   	else:
 		$eff = array('YES', 'label-success');
 	 	$out[]='<div class="page-header">
@@ -186,7 +190,7 @@ function yes_no_forms($page) {
     $out[] = '<div class="col-md-3"><h3><span class="label label-success">YES</span></h3>
 			    <h3>Equality</h3>
 			    <p> What efforts have been made to make your App available to and usable by the widest number of users?</p></div>';    
-    $out[] = '<div class="col-md-3"><h3><span class="label '.$eff[1].'">'.$eff[0].'</span></h3>
+    $out[] = '<div class="col-md-3"><h3><span class="label  label-success">YES</span></h3>
     			<h3>Effectiveness</h3>
 				<p>What efforts and evidence can you provide to support the effectiveness of your App?</p></div>';    				
 	$out[] = '<div class="col-md-3"><h3><span class="label label-success">YES</span></h3>
@@ -198,11 +202,11 @@ function yes_no_forms($page) {
 	$out[]='</div>';   
 	
 	$out[] ='<div class="row">';	
-    $out[] = '<div class="col-md-3"><h3><span class="label label-success">Yes</span></h3>
+    $out[] = '<div class="col-md-3"><h3><span class="label label-success">YES</span></h3>
 			    <h3>Registration</h3>
 			    <p> Information about registration form</p></div>'; 
 			       
-   	$out[] = '<div class="col-md-3"><h3><span class="label label-success">Yes</span></h3>
+   	$out[] = '<div class="col-md-3"><h3><span class="label label-success">YES</span></h3>
     			<h3>Technical Stability</h3>
 				<p>info about tech stability</p></div>';  
 	$out[]='</div>'; 
@@ -214,11 +218,12 @@ function yes_no_forms($page) {
         <ul class="nav nav-pills">
           <li id="equality_form" class="'.$form.'"><a href="/ie-design/the-form?form=equality_form">Equality ' . create_form_status_icon('equality_form', $tax_id).' </a></li>';
           
-     $out_app[] = '<li id="eff_form"><a href="/ie-design/the-form?form=eff_form&disabled='.$eff[2].'" class="count '.$eff[2].'">Effectiveness' . create_form_status_icon('eff_form', $tax_id).'</a></li>';
+     $out_app[] = '<li id="eff_form"><a href="/ie-design/the-form?form=eff_form" class="count '.$eff[2].'">Effectiveness' . create_form_status_icon('eff_form', $tax_id).'</a></li>';
      // remove transparency 22 Aug
      // <li id="trans_form"><a href="/ie-design/the-form?form=trans_form">Transparency ' . count_form_questions('trans_form', $tax_id).' </a></li>
-      $out_app[] ='<li id="ts_form"><a href="/ie-design/the-form?form=ts_form">Technical Stability ' . create_form_status_icon('ts_form', $tax_id).' </a></li>
-          <li id="reg_form"><a href="/ie-design/the-form?form=reg_form">Registration ' . create_form_status_icon('reg_form', $tax_id).' </a></li>';
+      $out_app[] ='<li id="ts_form"><a href="/ie-design/the-form?form=ts_form">Technical Stability ' . create_form_status_icon('ts_form', $tax_id).' </a></li>';
+      // remove registration 15 Sept
+         // <li id="reg_form"><a href="/ie-design/the-form?form=reg_form">Registration ' . create_form_status_icon('reg_form', $tax_id).' </a></li>';
      $out_app[]='<li id="qu_form"><a href="/ie-design/the-form?form=qu_form">Usability ' . create_form_status_icon('qu_form', $tax_id).' </a></li>
         </ul>
       </div>
@@ -263,7 +268,7 @@ function get_user_apps() {
 		}
 		else {
 			$count = count_questions($app->term_id, 'all-apps');
-			$result = '<span class="label label-info" id="test">In progress</span>';
+			$result = count_questions($app->term_id, 'total-pass-fail');
 		}
 	
 		// once clicked the session app id needs to change

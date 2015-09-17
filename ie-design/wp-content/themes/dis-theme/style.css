@@ -55,13 +55,18 @@ h3 {
   color: gray;
 }
 
-/* line 38, scss/dis-theme/core/_global-styles.scss */
+/* line 35, scss/dis-theme/core/_global-styles.scss */
+label {
+  font-size: 15px;
+}
+
+/* line 41, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field {
   margin-right: -15px;
   margin-left: -15px;
   min-height: 175px;
 }
-/* line 42, scss/dis-theme/core/_global-styles.scss */
+/* line 45, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field:before {
   content: "";
   display: block;
@@ -70,7 +75,7 @@ h3 {
   margin: 20px 0;
   background: #eee;
 }
-/* line 50, scss/dis-theme/core/_global-styles.scss */
+/* line 53, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field p.label {
   width: 66.66666666666666%;
   float: left;
@@ -79,11 +84,11 @@ h3 {
   padding-right: 15px;
   padding-left: 15px;
 }
-/* line 57, scss/dis-theme/core/_global-styles.scss */
+/* line 60, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field p.label label {
   white-space: normal;
 }
-/* line 61, scss/dis-theme/core/_global-styles.scss */
+/* line 64, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field ul.acf-radio-list, .acf-form .field ul.acf-checkbox-list {
   width: 33.33333333333333%;
   float: left;
@@ -92,15 +97,15 @@ h3 {
   padding-right: 15px;
   padding-left: 15px;
 }
-/* line 69, scss/dis-theme/core/_global-styles.scss */
+/* line 72, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field.field_type-taxonomy {
   display: none;
 }
-/* line 72, scss/dis-theme/core/_global-styles.scss */
+/* line 75, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field label {
   text-align: left;
 }
-/* line 75, scss/dis-theme/core/_global-styles.scss */
+/* line 78, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field input[type="submit"] {
   color: #fff;
   background-color: #5cb85c;
@@ -123,7 +128,7 @@ h3 {
   -ms-user-select: none;
   user-select: none;
 }
-/* line 96, scss/dis-theme/core/_global-styles.scss */
+/* line 99, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field input[type="submit"]:hover {
   color: #fff;
   background-color: #449d44;
@@ -131,7 +136,7 @@ h3 {
 }
 
 /*tidy up acf forms admin to insure to bleed through*/
-/* line 114, scss/dis-theme/core/_global-styles.scss */
+/* line 117, scss/dis-theme/core/_global-styles.scss */
 .wp-admin .modal {
   display: none !important;
 }
@@ -253,8 +258,9 @@ body.page-the-basics .acf-form .field.field_type-taxonomy {
 /* line 33, scss/dis-theme/pages/_the_basics.scss */
 body.page-the-basics .acf-form .field label {
   text-align: left;
+  font-size: 15px;
 }
-/* line 36, scss/dis-theme/pages/_the_basics.scss */
+/* line 37, scss/dis-theme/pages/_the_basics.scss */
 body.page-the-basics .acf-form .field input[type="submit"] {
   color: #fff;
   background-color: #5cb85c;
@@ -277,13 +283,13 @@ body.page-the-basics .acf-form .field input[type="submit"] {
   -ms-user-select: none;
   user-select: none;
 }
-/* line 57, scss/dis-theme/pages/_the_basics.scss */
+/* line 58, scss/dis-theme/pages/_the_basics.scss */
 body.page-the-basics .acf-form .field input[type="submit"]:hover {
   color: #fff;
   background-color: #449d44;
   border-color: #398439;
 }
-/* line 64, scss/dis-theme/pages/_the_basics.scss */
+/* line 65, scss/dis-theme/pages/_the_basics.scss */
 body.page-the-basics .acf-form select {
   display: block;
   width: 100%;

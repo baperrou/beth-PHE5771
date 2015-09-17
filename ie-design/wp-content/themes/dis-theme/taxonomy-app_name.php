@@ -2,9 +2,9 @@
 
 get_header(); 
  $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
- if(!isset($_SESSION['app_id'])) {
+// if(!isset($_SESSION['app_id'])) {
 	 $_SESSION['app_id']= $term->term_id;
-	 }
+//	 }
 
 ?>
 
@@ -22,16 +22,8 @@ get_header();
         </div>
        
       </div>
-      <div class="alert alert-danger">
-        <h3>
-          <i class="fa fa-exclamation-circle"></i>
-          This assessment is incomplete so can not be submitted for endorsement
-        </h3>
-        <p>
-          Check the essential items to resolve list below - everything here must
-          be completed before you can submit you application for endorsement.
-        </p>
-      </div>
+      <?php count_questions($term->term_id, 'total-alert');?>
+      
       <?php yes_no_forms('your_app'); ?>
       <div class="page-header">
         <h3>
@@ -81,7 +73,7 @@ get_header();
         <?php form_pass_fail('safety_form', $term->term_id, 'app_name');?> 
         <?php form_pass_fail('io_form', $term->term_id, 'app_name');?> 
         <?php form_pass_fail('od_form', $term->term_id, 'app_name');?> 
-        <?php form_pass_fail('reg_form', $term->term_id, 'app_name');?>         
+        <?php //form_pass_fail('reg_form', $term->term_id, 'app_name');?>         
       </ul>
       
     </div>

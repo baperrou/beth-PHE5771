@@ -5,6 +5,7 @@
 	            <div class="modal-header">
 		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 		            <h4 class="modal-title">Have you registered?</h4>
+		            <p id="feedback" class="alert-danger"></p>
 	            </div>
 	            <div class="modal-body">
 		            <ul class="nav nav-tabs">						

@@ -91,7 +91,23 @@ function create_user_cpt(){
 	*  Create a new post and add field data
 	*  - if the post does not already contain a "reference" to the field object, you must use the field_key instead of the field_name.
 	*/
-	
+	// first check if email exists already then prompt to login if it does
+	$ck_posts = get_posts(array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'developer',
+		'meta_query'	=> array(
+			'relation'		=> 'AND',
+			array(
+				'key'	 	=> 'dev_email',
+				'value'	  	=> $email,
+				'compare' 	=> '=',
+			),
+		),
+	));
+	if($ck_posts[0]->ID){
+		$result = 'yes';
+	}
+	else {
 	// Create post object
 	$my_post = array(
 	    'post_status'	=> 'publish',
@@ -125,16 +141,17 @@ function create_user_cpt(){
 
 	// END SEND EMAIL IF ITS A NEW REG FORM	
 	
-		
+		}
 
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-		 echo 'all good with app'; echo $app;
+		 echo $result;
 		 die();
    }
    else {
       header("Location: ".$_SERVER["HTTP_REFERER"]);
       die();
-   }   
+   }  
+   
 				
 }
 
@@ -221,9 +238,10 @@ function form_name($form){
         case 'ts_form':
         	return 'Technical Stability';
         	break;
-        case 'reg_form':
-        	return 'Registration';
-        	break;
+       // remove registration 15 Sept 
+       // case 'reg_form':
+        //	return 'Registration';
+       // 	break;
 
     }
 }
@@ -258,9 +276,10 @@ function form_id($form){
         case 'ts_form':
         	return 83;
         	break;
-        case 'reg_form':
-        	return 84;
-        	break;
+        // remove registration 15 Sept
+        //case 'reg_form':
+        //	return 84;
+        //	break;
 
     }
 }
@@ -294,9 +313,10 @@ function form_description($form){
         case 'ts_form':
         	return 'The following resources will help to determine if your app is high quality in terms of technical stability.';
         	break;
-        case 'reg_form':
-        	return 'The following questions help us better understand, categorise and promote your app to those who could use it or prescribe it. Questions about the apps publisher and developer are also captured here.';
-        	break;
+        // remove registration 15 Sept	
+       // case 'reg_form':
+        //	return 'The following questions help us better understand, categorise and promote your app to those who could use it or prescribe it. Questions about the apps publisher and developer are also captured here.';
+       // 	break;
 
     }
 }
@@ -393,7 +413,7 @@ function form_pass_fail($type, $app_id, $page){
 	//interoperatbility logic
 	elseif ($type == 'io_form') {	
 		//check first question, decide what to do if NO
-		if($fields['io_q1']['value'] =='NO'): 
+		if($fields['io_q0']['value'] =='NO'): 
 			echo 'not relevant';
 			break;
 		endif;	
@@ -401,12 +421,12 @@ function form_pass_fail($type, $app_id, $page){
 			switch($field['value']){				
 				case 'SELECT ANSWER':
 					$score = 19991;
-					break 2;
+					break;
 				default :									
 					// pass logic for interoperability all transparent
 					// may need to change to add all questions
 					$score = 1;
-					break 2;
+					break;
 				}
 			}
 												
@@ -675,9 +695,9 @@ function form_pass_fail($type, $app_id, $page){
 	}
 	if($page == 'single_form')	{	
 		$out = '<div class="alert ' .$alert. '  "><h3> ' . $text . '</h3></div>';
-		echo '<h2>SCORE ';
-		echo $score;
-		echo '</h2>';
+		//echo '<h2>SCORE ';
+		//echo $score;
+		//echo '</h2>';
 		echo $out;
 	}
 	elseif($page == 'app_name') {
@@ -830,7 +850,8 @@ function count_answered_questions_all() {
 	$tax_id = $_SESSION['app_id'];
 
 	$posts = get_posts(array(
-    'post_type' => array( 'equality_form', 'ps_form', 'safety_form', 'od_form',  'qu_form', 'eff_form', 'reg_form', 'ts_form', 'io_form' ),
+		//remove registration form 16-9-15 'reg_form',
+    'post_type' => array( 'equality_form', 'ps_form', 'safety_form', 'od_form',  'qu_form', 'eff_form',  'ts_form', 'io_form' ),
     'tax_query' => array(
         array(
         'taxonomy' => 'app_name',
@@ -849,6 +870,7 @@ function count_answered_questions_all() {
 	$i = 0;
 	
 	if( $fields ){
+		
 		foreach( $fields as $key => $field ):
 		
 			foreach( $field as $key => $question ):
@@ -1020,7 +1042,7 @@ function count_single_form_answered($type, $app_id) {
 		$i = 0;
 		if( $fields ):	
 			foreach( $fields as $field ):				
-				if( $field['value'] !="SELECT ANSWER" ):
+				if( $field['value'] !=null && $field['value'] !="SELECT ANSWER" ):
 				// do counting here
 				$i++;
 				endif;
@@ -1078,14 +1100,14 @@ function count_questions($app_id, $page) {
 				count_single_form_answered('safety_form', $app_id) + 
 				count_single_form_answered('io_form', $app_id) + 
 				count_single_form_answered('od_form', $app_id) + 
-				count_single_form_answered('reg_form', $app_id) + 
+				//count_single_form_answered('reg_form', $app_id) + 
 				count_single_form_answered('eff_form', $app_id) + 
 				count_single_form_answered('ts_form', $app_id) + 
 				count_single_form_answered('equality_form', $app_id);
 	
 		$k = 	single_form_question_count('ts_form', $app_id) +
 				single_form_question_count('equality_form', $app_id)+
-				single_form_question_count('reg_form', $app_id) + 				 
+				//single_form_question_count('reg_form', $app_id) + 				 
 				single_form_question_count('qu_form', $app_id) + 
 				single_form_question_count('eff_form', $app_id);
 				
@@ -1117,6 +1139,55 @@ function count_questions($app_id, $page) {
     }
     elseif ($page == 'all-apps'){
 	    return $i.' / '.$k;
+    }
+    elseif ($page == 'total-alert') {
+	    if($i == $k) {
+		    echo '<div class="alert alert-success">
+        <h3>
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          This assessment is complete and ready to be submitted
+        </h3>
+        <p>
+          You should ensure that the declarations you have made in answering the
+          questions are true and complete before submitting this assessment. You
+          can revisit the assessment in the future to enhance your scores or to reflect
+          changes in your application.
+        </p>
+        <div>
+          <br>
+          <div>
+            <a href="#" class="btn btn-default">Submit this assessment to be endorsed</a>
+            <br>
+          </div>
+        </div>
+        <p>
+        </p>
+      </div>';
+	    }
+	    elseif ($i<$k) {
+		    echo ' <div class="alert alert-danger">
+        <h3>
+          <i class="fa fa-exclamation-circle"></i>
+          This assessment is incomplete so can not be submitted for endorsement
+        </h3>
+        <p>
+          Check the essential items to resolve list below - everything here must
+          be completed before you can submit you application for endorsement.
+        </p>
+      </div>
+';
+	    }
+	}
+    elseif ($page == 'total-pass-fail') {
+	    if($i == $k) {
+		    return '<span class="label label-success">Completed</span>';
+	    }
+	    elseif ($i<$k) {
+		    return '<span class="label label-info">In progress</span>';
+	    }
+	}
+    else {
+	    echo 'there was a counting error';
     }
     
 }

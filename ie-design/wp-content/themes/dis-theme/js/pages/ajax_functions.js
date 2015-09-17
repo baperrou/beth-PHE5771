@@ -44,9 +44,15 @@
 	         dataType : "html",
 	         url : myAjax.ajaxurl,
 	         data : {action: "create_user_cpt", app_id : the_app, name : name, email : email, password : password, verify_password : verify_password},
-	         success: function(data) {   
-		        $('.close').trigger('click');		        
-				window.location = "http://dev.doitsimply.co.uk/ie-design/your-apps?success=true";
+	         success: function(data) {  
+		         if(data =='yes') {	
+			        
+				 $('#feedback').html('That email has already been used, please login with previous details.');
+				 }
+				 else {
+					$('.close').trigger('click');		        
+				window.location = "http://dev.doitsimply.co.uk/ie-design/your-apps?success=true";				 } 
+		        
 
 	            },
 	         error:  function(request,error){
