@@ -62,6 +62,10 @@
         <hr>
         
  <?php 
+	 //if they want to enable the form you must update the basic qualifying questions.
+	  if($_GET['enable'] == 'enable') {
+		  	update_basic_form($form);
+		  }
 	 //if safety form check for answered questions then give warning
 	 if($_GET['begin_safety']) {
 		 $begin_safety = 1;
@@ -80,7 +84,7 @@
           </p>
           <div>
             <br>
-            <a href="#" onClick="alert(\'TO DO\')" class="btn btn-default">Enable this section</a>
+            <a href="'.get_permalink( $post->ID ).'?form='.$form.'&enable=enable"  class="btn btn-default">Enable this section</a>
           </div>
           <p>
           </p>
@@ -130,6 +134,10 @@
 				   if (selected_option <= -998) {
 				   $(this).closest('.field_type-select').addClass('bg-danger');
 					}
+					if (selected_option != 'SELECT ANSWER' || selected_option >= -997) {
+				   $(this).closest('.field_type-select').addClass('bg-fade');
+					}
+
   			
    });
 

@@ -8,7 +8,9 @@
 			
 		<?php endwhile; endif; ?>
 		
-		<?php test_count_form_questions('eff_form', 26);?>
+		<?php list($bs, $bf, $ef, $bp) = create_threasholds('ts_form');
+			echo $bs; echo $bf; echo $ef; echo $bp;
+			//test_count_form_questions('eff_form', 26);?>
 </div>
 </div>
 <?php get_footer(); ?>

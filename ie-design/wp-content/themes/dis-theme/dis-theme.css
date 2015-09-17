@@ -51,13 +51,31 @@ label {
   font-size: 15px;
 }
 
-/* line 41, scss/dis-theme/core/_global-styles.scss */
+/* line 40, scss/dis-theme/core/_global-styles.scss */
+.bg-fade {
+  zoom: 1;
+  filter: alpha(opacity=45);
+  opacity: 0.45;
+  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+/* line 50, scss/dis-theme/core/_global-styles.scss */
+.bg-fade.bg-danger {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+/* line 58, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field {
   margin-right: -15px;
   margin-left: -15px;
   min-height: 175px;
 }
-/* line 45, scss/dis-theme/core/_global-styles.scss */
+/* line 62, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field:before {
   content: "";
   display: block;
@@ -66,7 +84,7 @@ label {
   margin: 20px 0;
   background: #eee;
 }
-/* line 53, scss/dis-theme/core/_global-styles.scss */
+/* line 70, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field p.label {
   width: 66.66666666666666%;
   float: left;
@@ -75,11 +93,11 @@ label {
   padding-right: 15px;
   padding-left: 15px;
 }
-/* line 60, scss/dis-theme/core/_global-styles.scss */
+/* line 77, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field p.label label {
   white-space: normal;
 }
-/* line 64, scss/dis-theme/core/_global-styles.scss */
+/* line 81, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field ul.acf-radio-list, .acf-form .field ul.acf-checkbox-list {
   width: 33.33333333333333%;
   float: left;
@@ -88,15 +106,15 @@ label {
   padding-right: 15px;
   padding-left: 15px;
 }
-/* line 72, scss/dis-theme/core/_global-styles.scss */
+/* line 89, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field.field_type-taxonomy {
   display: none;
 }
-/* line 75, scss/dis-theme/core/_global-styles.scss */
+/* line 92, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field label {
   text-align: left;
 }
-/* line 78, scss/dis-theme/core/_global-styles.scss */
+/* line 95, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field input[type="submit"] {
   color: #fff;
   background-color: #5cb85c;
@@ -119,7 +137,7 @@ label {
   -ms-user-select: none;
   user-select: none;
 }
-/* line 99, scss/dis-theme/core/_global-styles.scss */
+/* line 116, scss/dis-theme/core/_global-styles.scss */
 .acf-form .field input[type="submit"]:hover {
   color: #fff;
   background-color: #449d44;
@@ -127,7 +145,7 @@ label {
 }
 
 /*tidy up acf forms admin to insure to bleed through*/
-/* line 117, scss/dis-theme/core/_global-styles.scss */
+/* line 134, scss/dis-theme/core/_global-styles.scss */
 .wp-admin .modal {
   display: none !important;
 }

@@ -233,3 +233,39 @@ function activation_page($type) {
 	
 	
 }
+// allow a section to be enabled by updating the basic form answers
+
+function update_basic_form($form) {
+	//global $post;
+		//get the post_id of the correct basic form based on app id
+		$tax_id = $_SESSION['app_id'];
+			$get_form = get_posts(array(
+			  'post_type' => 'basic_form',
+			  'numberposts' => -1,
+			  'tax_query' => array(
+			    array(
+			      'taxonomy' => 'app_name',
+			      'field' => 'id',
+			      'terms' => $tax_id
+			    )
+			  )
+			  )
+			);
+		switch($form){
+		case 'safety_form':
+        	$question ='basics_q2';
+            break;	
+        case 'ps_form':
+        	$question ='basics_q3';
+            break;
+        case 'io_form':
+        	$question ='basics_q4';
+            break;
+        case 'od_form':
+        	$question ='basics_q5';
+            break;
+        }
+	// now update the answer to enable the section
+		update_field($question, 'YES', $get_form[0]->ID);
+	
+}

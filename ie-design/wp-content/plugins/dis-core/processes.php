@@ -320,8 +320,24 @@ function form_description($form){
 
     }
 }
+
+// create threasholds for each form best/basic/enhanced
+
+function create_threasholds($form) {
+	$posts = get_posts(array(
+		'numberposts'	=> -1,
+		'post_type'		=> 's_score',
+		'meta_key'		=> 'scored_form',
+		'meta_value'	=> $form
+	));
+	
+	
+	$bs = get_field('basic_score', $posts[0]->ID);
+	$eh =  get_field('enhanced', $posts[0]->ID);
+	$bp =  get_field('best_practice', $posts[0]->ID);
+	return array($bs, $eh, $bp);
+}
 //begin per form checks for pass/fail etc
-//start privacy security
 
 function form_pass_fail($type, $app_id, $page){
 	// first check if form exists for app id
@@ -360,14 +376,14 @@ function form_pass_fail($type, $app_id, $page){
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
-					break 2;	
+					break;	
 				case 'SELECT ANSWER':
 					$score = 19991;
-					break 2;
+					break;
 				default :									
 					// pass logic for Privacy and Security Only
 					$score = 1;
-					break 2;
+					break;
 				}
 			}
 												
@@ -670,6 +686,9 @@ function form_pass_fail($type, $app_id, $page){
 			$score = 'NOTNEEDED';
 		endif;	
 		
+	// get thresholds to test with
+	list($bs, $eh, $bp) = create_threasholds($type);	
+		
 	switch($score){
 		case $score == "NOTNEEDED" :
 			$level = 'Not relevant';	
@@ -680,16 +699,31 @@ function form_pass_fail($type, $app_id, $page){
 			$alert = 'alert-danger';
 			$text = 'Your app has failed evaluation for 1 or more reasons.  Please see red below to correct';	
 			$level = 'Failed';
+			$test = 0;
 			break;
-		case $score >= 1 && $score < 2000:
+		case $score >= $bs && $score < $eh:
 			$alert = 'alert-success';
 			$text = 'Your app has passed this section.';
-			$level = 'Pass';
+			$level = 'Basic';
+			$test = 2;
+			break;	
+		case $score >= $eh && $score < $bp:
+			$alert = 'alert-success';
+			$text = 'Your app has passed this section.';
+			$level = 'Enhanced';
+			$test = 3;
+			break;	
+		case $score >= $bp && $score < 2000:
+			$alert = 'alert-success';
+			$text = 'Your app has passed this section.';
+			$level = 'Best Practice';
+			$test = 4;
 			break;	
 		case $score >5000:
 			$alert = 'alert-warning';
 			$text = 'You have not yet completed this section.';
 			$level = 'Incomplete';
+			$test = 1;
 			break;
 		
 	}
@@ -706,6 +740,9 @@ function form_pass_fail($type, $app_id, $page){
         $out .= form_name($type);
         $out .= '</b></li>';
         echo $out;
+	}
+	elseif($page =='just_score') {
+		return $test;
 	}
 	
 }
@@ -1141,7 +1178,26 @@ function count_questions($app_id, $page) {
 	    return $i.' / '.$k;
     }
     elseif ($page == 'total-alert') {
-	    if($i == $k) {
+	    $level = create_level();
+	    if($level == 'f') {
+		    echo '<div class="alert alert-danger">
+        <h3>
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          This assessment is complete and but has failed for one or more reasons.
+        </h3>
+        <p>
+          Please review and correct sections before attempting to submit.
+        </p>
+        <div>
+          
+        </div>
+        <p>
+        </p>
+      </div>';
+
+		    
+	    }
+	    elseif($i == $k ) {
 		    echo '<div class="alert alert-success">
         <h3>
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -1191,4 +1247,43 @@ function count_questions($app_id, $page) {
     }
     
 }
-
+// create level array for all forms filled out per app
+function create_level() {
+	//current session app id
+	$id =$_SESSION['app_id'];
+	$level = array();
+	      $level[]= form_pass_fail('ps_form', $id, 'just_score');
+	      $level[]= form_pass_fail('equality_form', $id, 'just_score');      
+	      $level[]= form_pass_fail('eff_form', $id, 'just_score');
+	      $level[]= form_pass_fail('ts_form', $id, 'just_score');
+	      $level[]= form_pass_fail('qu_form', $id, 'just_score');
+	      $level[]= form_pass_fail('safety_form', $id, 'just_score');
+	      $level[]= form_pass_fail('io_form', $id, 'just_score');
+		  $level[]= form_pass_fail('od_form', $id, 'just_score');
+	 arsort($level);
+	  foreach ($level as $test) {
+	  	switch($test) {
+	      	case 0:
+	      		$type = 'f';
+		  		$failed = 'alert-danger';
+		  		break;
+		  	case 1:
+		  		$type = 'i';
+		  		$incomplete = 'alert-warning';
+		  		break;
+		  	case 2:
+		  		$type = 'b';
+		  		$basic = 'alert-info';
+		  		break;
+		  	case 3:
+		  		$type = 'e';
+		  		$enhanced = 'alert-info';
+		  		break;
+		  	case 4:
+		  		$type = 'bp';
+		  		$best = 'alert-info';
+		  		break;
+		  	}
+		}	
+		  	return $type;			
+}

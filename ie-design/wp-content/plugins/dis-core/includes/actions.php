@@ -389,7 +389,8 @@ function custom_init()
 
     
      /** Register 'Registration Form' post type */
-    $labels = array(
+     //remove use of 17-9-2015
+  /*  $labels = array(
         'name' => _x('Registration Form', 'post type general name'),
         'singular_name' => _x('Registration Form', 'post type singular name'),
         'add_new' => _x('Add New', 'Registration Form'),
@@ -420,7 +421,7 @@ function custom_init()
       'supports' => array('title', 'editor')
   );
     if (constant('IS_SUPERADMIN_MODE') == true) $args['supports'][] = 'custom-fields';
-    register_post_type('reg_form', $args);
+    register_post_type('reg_form', $args);*/
 
 
 

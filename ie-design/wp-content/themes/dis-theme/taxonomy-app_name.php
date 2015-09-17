@@ -7,6 +7,28 @@ get_header();
 //	 }
 
 ?>
+ <?php // check all forms for level of pass fail take lowest common and create.
+	  $type = create_level();
+	      echo $type;
+	      switch($type) {
+	      	case "f":
+		  		$failed = 'alert-danger';
+		  		break;
+		  	case "i":
+		  		$incomplete = 'alert-warning';
+		  		break;
+		  	case "b":
+		  		$basic = 'alert-info';
+		  		break;
+		  	case "e":
+		  		$enhanced = 'alert-info';
+		  		break;
+		  	case "bp":
+		  		$best = 'alert-info';
+		  		break;
+		  	}					
+		  	
+	      ?>
 
 <div class="container">
       <div class="jumbotron">
@@ -25,12 +47,13 @@ get_header();
       <?php count_questions($term->term_id, 'total-alert');?>
       
       <?php yes_no_forms('your_app'); ?>
+           
       <div class="page-header">
         <h3>
           Summary of your assessment
         </h3>
         <div class="row">
-          <div class="col-md-3 alert-info">
+          <div class="col-md-3 <?php echo $failed;?> <?php echo $incomplete;?>">
             <h3>
               Unacceptable
             </h3>
@@ -38,7 +61,7 @@ get_header();
               There are essential requirements that have not been met
             </p>
           </div>
-          <div class="col-md-3 not-needed">
+          <div class="col-md-3 <?php echo $basic;?>">
             <h3>
               Basic
             </h3>
@@ -46,7 +69,7 @@ get_header();
               All essential requirements have been met.
             </p>
           </div>
-          <div class="col-md-3 not-needed">
+          <div class="col-md-3 <?php echo $enhanced;?>">
             <h3>
               Enhanced
             </h3>
@@ -54,7 +77,7 @@ get_header();
               Some enhanced best practice has been declared with supporting documentation.
             </p>
           </div>
-          <div class="col-md-3 not-needed">
+          <div class="col-md-3 <?php echo $best;?>">
             <h3>
               Best practice
             </h3>
