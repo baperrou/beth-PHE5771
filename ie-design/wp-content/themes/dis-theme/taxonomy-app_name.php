@@ -9,13 +9,15 @@ get_header();
 ?>
  <?php // check all forms for level of pass fail take lowest common and create.
 	  $type = create_level();
-	      echo $type;
+	      
 	      switch($type) {
 	      	case "f":
 		  		$failed = 'alert-danger';
+		  		$text = "Failed";		  		
 		  		break;
 		  	case "i":
 		  		$incomplete = 'alert-warning';
+		  		$text = "Unacceptable";
 		  		break;
 		  	case "b":
 		  		$basic = 'alert-info';
@@ -55,8 +57,7 @@ get_header();
         <div class="row">
           <div class="col-md-3 <?php echo $failed;?> <?php echo $incomplete;?>">
             <h3>
-              Unacceptable
-            </h3>
+              Failed</h3>
             <p>
               There are essential requirements that have not been met
             </p>

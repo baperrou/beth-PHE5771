@@ -699,7 +699,7 @@ function form_pass_fail($type, $app_id, $page){
 			$alert = 'alert-danger';
 			$text = 'Your app has failed evaluation for 1 or more reasons.  Please see red below to correct';	
 			$level = 'Failed';
-			$test = 0;
+			$test = -1;
 			break;
 		case $score >= $bs && $score < $eh:
 			$alert = 'alert-success';
@@ -1261,9 +1261,10 @@ function create_level() {
 	      $level[]= form_pass_fail('io_form', $id, 'just_score');
 		  $level[]= form_pass_fail('od_form', $id, 'just_score');
 	 arsort($level);
+	 
 	  foreach ($level as $test) {
 	  	switch($test) {
-	      	case 0:
+	      	case -1:
 	      		$type = 'f';
 		  		$failed = 'alert-danger';
 		  		break;
@@ -1285,5 +1286,6 @@ function create_level() {
 		  		break;
 		  	}
 		}	
-		  	return $type;			
+		  	return $type;	
+		  		
 }

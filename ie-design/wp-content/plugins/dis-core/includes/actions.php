@@ -421,7 +421,7 @@ function custom_init()
       'supports' => array('title', 'editor')
   );
     if (constant('IS_SUPERADMIN_MODE') == true) $args['supports'][] = 'custom-fields';
-    register_post_type('reg_form', $args);*/
+    register_post_type('reg_form', $args);
 
 
 
