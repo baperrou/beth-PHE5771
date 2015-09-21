@@ -430,8 +430,8 @@ function form_pass_fail($type, $app_id, $page){
 	elseif ($type == 'io_form') {	
 		//check first question, decide what to do if NO
 		if($fields['io_q0']['value'] =='NO'): 
-			echo 'not relevant';
-			break;
+			$score= 'not relevant';
+			//break;
 		endif;	
 		foreach($fields as $field ){						
 			switch($field['value']){				
@@ -452,8 +452,8 @@ function form_pass_fail($type, $app_id, $page){
 	elseif ($type == 'od_form') {
 		//check first question, decide what to do if NO
 		if($fields['od_q0']['value'] =='NO'): 
-			echo 'not relevant';
-			break;
+			$score= 'not relevant';
+			//break;
 		endif;
 		if($fields['od_q3']['value'] ==-999):
 		//this no represents absolute fail 
@@ -1183,7 +1183,7 @@ function count_questions($app_id, $page) {
 		    echo '<div class="alert alert-danger">
         <h3>
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          This assessment is complete and but has failed for one or more reasons.
+          This has failed for one or more reasons.
         </h3>
         <p>
           Please review and correct sections before attempting to submit.

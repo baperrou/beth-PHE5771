@@ -126,7 +126,7 @@
     <script type="text/javascript">
 	   (function ($) {
 		    $(document).live('acf/setup_fields', function(e, div){
-				
+				// color change for select options
 				$('.page-the-form .acf_postbox .field_type-select option:selected').each(function(){
 			   
 				   var selected_option = $(this).val();
@@ -137,7 +137,15 @@
 					if (selected_option != 'SELECT ANSWER' || selected_option >= -997) {
 				   $(this).closest('.field_type-select').addClass('bg-fade');
 					}
-
+				});	
+				// color change for input options
+				$('.page-the-form .acf_postbox .field_type-text input').each(function(){
+		   
+			   var input_value = $(this).val();
+			 // alert(input_value);
+			   if (input_value) {
+			  $(this).closest('.field_type-text').addClass('bg-fade');
+				}				
   			
    });
 
