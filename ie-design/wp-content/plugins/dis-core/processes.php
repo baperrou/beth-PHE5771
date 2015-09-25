@@ -372,14 +372,15 @@ function form_pass_fail($type, $app_id, $page){
 		}
 		foreach($fields as $field ){						
 			switch($field['value']){
+				case 'SELECT ANSWER':
+					$score = 19991;
+					break;
 				case -999:
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
 					break;	
-				case 'SELECT ANSWER':
-					$score = 19991;
-					break;
+				
 				default :									
 					// pass logic for Privacy and Security Only
 					$score = 1;
@@ -494,14 +495,15 @@ function form_pass_fail($type, $app_id, $page){
 		//check first question, decide what to do if NO		
 		foreach($fields as $field ){						
 			switch($field['value']){
+				case 'SELECT ANSWER':
+					$score = 19991;
+					break 2;
 				case -999:
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
 					break 2;	
-				case 'SELECT ANSWER':
-					$score = 19991;
-					break 2;
+				
 				default :									
 					// pass logic for Privacy and Security Only
 					$score = 1;
@@ -516,14 +518,15 @@ function form_pass_fail($type, $app_id, $page){
 		$score = 0;	
 		foreach($fields as $field ){						
 			switch($field['value']){
+				case 'SELECT ANSWER':
+					$score = 19991;
+					break 1;
 				case -999:
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
 					break 1;	
-				case 'SELECT ANSWER':
-					$score = 19991;
-					break 1;
+				
 				default :									
 					// pass logic for Privacy and Security Only
 					$score = $score + $field['value'];
@@ -538,14 +541,15 @@ function form_pass_fail($type, $app_id, $page){
 		$score = 0;		
 		foreach($fields as $field ){						
 			switch($field['value']){
+				case 'SELECT ANSWER':
+					$score = 19991;
+					break 1;
 				case -999:
 					//all nos represent absolute fail
 					// -999 represents fail for now
 		        	$score = -999;	
 					break 1;	
-				case 'SELECT ANSWER':
-					$score = 19991;
-					break 1;
+				
 				default :									
 					// pass logic for tech stability Only
 					// do we need to add up the 1s
@@ -559,15 +563,16 @@ function form_pass_fail($type, $app_id, $page){
 	elseif ($type == 'eff_form') {
 		
 		foreach($fields as $field ){
-			if($field['value'] ==-999):
-			//  represents automative fail
-			$score = -999;
-			break;
-			endif;						
+								
 			if($field['value'] =='SELECT ANSWER'):
 			// 19991 represents incomplete for now
 			$score = 19990;
 			endif;
+			if($field['value'] ==-999):
+			//  represents automative fail
+			$score = -999;
+			break;
+			endif;	
 		}
 		if($fields['eff_q1']['value'] !='SELECT ANSWER'): 
 			$score = $score + 1;
@@ -694,6 +699,12 @@ function form_pass_fail($type, $app_id, $page){
 			$level = 'Not relevant';	
 			$alert = 'alert-info';
 			break;
+		case $score >5000:
+			$alert = 'alert-warning';
+			$text = 'You have not yet completed this section.';
+			$level = 'Incomplete';
+			$test = 1;
+			break;
 		case $score < 1 :
 			// any negative number at this point is a fail
 			$alert = 'alert-danger';
@@ -719,12 +730,7 @@ function form_pass_fail($type, $app_id, $page){
 			$level = 'Best Practice';
 			$test = 4;
 			break;	
-		case $score >5000:
-			$alert = 'alert-warning';
-			$text = 'You have not yet completed this section.';
-			$level = 'Incomplete';
-			$test = 1;
-			break;
+		
 		
 	}
 	if($page == 'single_form')	{	
@@ -784,9 +790,9 @@ function test_count_form_questions($type, $app_id) {
 		// testing for conditional logic on specific forms removing questions from count with conditional logic			
 			//privacy and security form
 			if($type == 'ps_form'):
-				if($fields['ps_q1']['value'] != 'YES'):
-					$q= $q - 11;
-				endif;				
+				//if($fields['ps_q1']['value'] != 'YES'):
+				//	$q= $q - 11;
+				//endif;				
 			endif;
 			//safety form
 			if($type == 'safety_form'):
@@ -1179,7 +1185,7 @@ function count_questions($app_id, $page) {
     }
     elseif ($page == 'total-alert') {
 	    $level = create_level();
-	    if($level == 'f') {
+	    if($level == 'f' AND $i==$k) {
 		    echo '<div class="alert alert-danger">
         <h3>
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -1264,14 +1270,15 @@ function create_level() {
 	 
 	  foreach ($level as $test) {
 	  	switch($test) {
-	      	case -1:
-	      		$type = 'f';
-		  		$failed = 'alert-danger';
-		  		break;
 		  	case 1:
 		  		$type = 'i';
 		  		$incomplete = 'alert-warning';
 		  		break;
+	      	case -1:
+	      		$type = 'f';
+		  		$failed = 'alert-danger';
+		  		break;
+		  	
 		  	case 2:
 		  		$type = 'b';
 		  		$basic = 'alert-info';
