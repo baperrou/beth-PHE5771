@@ -31,7 +31,10 @@
 		        	
 						foreach($terms as $term) {
 							if($term->slug == $app){
-								$selected = 'selected';
+								$selected = 'selected ="selected"';
+							}
+							else {
+								$selected = '';
 							}
 							$out = '<option value="' . $term->slug.'" ' .$selected.'>'. $term->name.'</option>';
 							echo $out;
