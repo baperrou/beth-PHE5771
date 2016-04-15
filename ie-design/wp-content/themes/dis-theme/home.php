@@ -10,7 +10,8 @@
           App is safe and trustworthy they are more likely to recommend it to patients,
           and patients are more likely to use it.
         </p>
-        <a href="/ie-design/?page_id=296" class="btn 099 btn-primary">Learn more</a>
+       <!-- <a href="/ie-design/?page_id=296" class="btn 099 btn-primary">Learn more</a>-->
+         <a href="/ie-design/member-login" class="btn 099 btn-primary">Learn more</a>
        
       </div>
         
